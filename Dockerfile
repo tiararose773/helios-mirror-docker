@@ -1,6 +1,6 @@
 FROM ubuntu:21.04
 
-LABEL org.opencontainers.image.source="https://github.com/missemily2022/helios-mirror-docker"
+LABEL org.opencontainers.image.source="https://github.com/tiararose773/helios-mirror-docker"
 LABEL org.opencontainers.image.description="Docker for Helios Mirror Bot"
 
 ARG TARGETPLATFORM BUILDPLATFORM
@@ -19,11 +19,11 @@ RUN apt-get -y update && apt-get -y upgrade && \
         libpthread-stubs0-dev zlib1g-dev libpq-dev libffi-dev
         
 # Installing Megasdkrest
-RUN curl -fsSL https://github.com/jaskaranSM/megasdkrest/releases/download/v0.1/megasdkrest -o /usr/local/bin/megasdkrest \
+RUN curl -fsSL https://github.com/anasty17/megasdkrest/releases/download/latest/megasdkrest-amd64 -o /usr/local/bin/megasdkrest \
 && chmod +x /usr/local/bin/megasdkrest
 
 # Installing Mega SDK Python Binding
-ENV MEGA_SDK_VERSION="3.11.1"
+ENV MEGA_SDK_VERSION="3.11.2"
 RUN git clone https://github.com/meganz/sdk.git --depth=1 -b v$MEGA_SDK_VERSION ~/home/sdk \
     && cd ~/home/sdk && rm -rf .git \
     && autoupdate -fIv && ./autogen.sh \
